@@ -22,7 +22,7 @@ def send_message(prompt):
         response_text = get_weather(city, weather_api_key)
     else:
         # otherwise use the ChatGPT API
-        print("API key at the time of request:", openai.api_key)
+        #print("API key at the time of request:", openai.api_key)
         response = openai.Completion.create(engine="text-davinci-002", prompt=prompt, max_tokens=100)
         response_text = response.choices[0].text.strip()
 
