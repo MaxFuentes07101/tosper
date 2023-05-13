@@ -12,7 +12,7 @@ from speaker import Speaker
 from microphone import Microphone
 from user import User
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 def send_message(prompt):
     # check if the prompt is a request for weather information
