@@ -35,12 +35,14 @@ def get_weather(city, api_key):
     response = requests.get(complete_url)
     weather_data = response.json()
 
-    if weather_data["cod"] != "404":
+    if weather_data.get("cod") != "404" and weather_data.get("main"):
         main_data = weather_data["main"]
         weather_desc = weather_data["weather"][0]["description"]
         return f"The current weather in {city} is {weather_desc} with a temperature of {main_data['temp']} Kelvin."
-    else:
+    elif weather_data.get("cod") == "404":
         return f"Sorry, I couldn't find the weather for {city}."
+    else:
+        return f"Sorry, the weather data for {city} is currently unavailable."
 
 def listen_for_name():
     audio_data = microphone.listen()
